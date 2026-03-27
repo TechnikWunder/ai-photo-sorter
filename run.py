@@ -1,5 +1,5 @@
 from pathlib import Path
-import sys, main, converter
+import sys, os, main, converter
 
 model = input("model: ")
 prompt = input("prompt: ")
