@@ -8,7 +8,7 @@ def main(model, prompt, pathFile, count_all, count, error_first):
         model=model,
         messages=[{
             'role': 'user',
-            'content': prompt + " its so that you can only answer with Y or N. Y for keep and N for delete. yust with N or Y not with N. or simless jsut with one letter.",
+            'content': prompt + " you can only answer with Y or N. Y for keep and N for delete. yust with N or Y just with one letter. do not describe your answer, just answer with Y or N.",
             'images': [pathFile]
         }]
     )
