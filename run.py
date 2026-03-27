@@ -1,6 +1,11 @@
 from pathlib import Path
 import sys, main, converter
 
+model = input("model: ")
+prompt = input("prompt: ")
+
+os.system(f"ollama pull {model}")
+
 folder = Path('./photos_input')
 
 count_all = len(list(folder.glob("*.heic")))

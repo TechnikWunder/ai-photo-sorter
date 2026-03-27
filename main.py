@@ -1,14 +1,15 @@
 import ollama, shutil, os
 from pathlib import Path
+import run
 
 def main(pathFile, count_all, count, error_first):
     print(f"analizing: {pathFile} {count}/{count_all}")
 
     response = ollama.chat(
-        model='llama3.2-vision',
+        model=run.model,
         messages=[{
             'role': 'user',
-            'content': 'Identify if the primary object in the image is a product, note, book, or similar. Respond with the character Y or N.',
+            'content': run.prompt + " its so that you can only answer with Y or N. Y for keep and N for delete. yust with N or Y not with N. or simless jsut with one letter.",
             'images': [pathFile]
         }]
     )
