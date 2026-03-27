@@ -1,6 +1,5 @@
 import ollama, shutil, os
 from pathlib import Path
-import run
 
 def main(model, prompt, pathFile, count_all, count, error_first):
     print(f"analizing: {pathFile} {count}/{count_all}")
