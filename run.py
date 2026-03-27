@@ -20,15 +20,15 @@ count_all = len(list(folder.glob("*.jpg"))) + len(list(folder.glob("*.jpeg"))) +
 count = 1
 
 for pathFile in folder.glob('*.jpg'):
-    main.main(pathFile, count_all, count, True)
+    main.main(model, prompt, pathFile, count_all, count, True)
     count += 1
 
 for pathFile in folder.glob('*.jpeg'):
-    main.main(pathFile, count_all, count, True)
+    main.main(model, prompt, pathFile, count_all, count, True)
     count += 1
 
 for pathFile in folder.glob('*.png'):
-    main.main(pathFile, count_all, count, True)
+    main.main(model, prompt, pathFile, count_all, count, True)
     count += 1
 
 sys.exit("Finish!")

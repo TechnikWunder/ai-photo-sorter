@@ -2,22 +2,22 @@ import ollama, shutil, os
 from pathlib import Path
 import run
 
-def main(pathFile, count_all, count, error_first):
+def main(model, prompt, pathFile, count_all, count, error_first):
     print(f"analizing: {pathFile} {count}/{count_all}")
 
     response = ollama.chat(
-        model=run.model,
+        model=model,
         messages=[{
             'role': 'user',
-            'content': run.prompt + " its so that you can only answer with Y or N. Y for keep and N for delete. yust with N or Y not with N. or simless jsut with one letter.",
+            'content': prompt + " its so that you can only answer with Y or N. Y for keep and N for delete. yust with N or Y not with N. or simless jsut with one letter.",
             'images': [pathFile]
         }]
     )
 
-    logic(response, pathFile, error_first, count_all, count)
+    logic(model, prompt, response, pathFile, error_first, count_all, count)
 
 
-def logic(response, pathFile, error_first, count_all, count):
+def logic(model, prompt, response, pathFile, error_first, count_all, count):
 
     if response['message']['content'] == "N":
 
@@ -33,7 +33,7 @@ def logic(response, pathFile, error_first, count_all, count):
         if error_first:
 
             print(f"Error in response for {pathFile}. Response was: {response['message']['content']} first time. Retrying...")
-            main(pathFile, count_all, count, False)
+            main(model, prompt, pathFile, count_all, count, False)
 
         else:
 
